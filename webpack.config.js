@@ -1,8 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { DefinePlugin } = require('webpack');
+const dotenv = require('dotenv');
 
 module.exports = {
-    entry: './client/src/index.js', // Entry point of your React application
+    entry: './client/src/index.tsx', // Entry point of your React application
     output: {
         path: path.resolve(__dirname, 'dist'), // Output directory
         filename: 'bundle.js', // Output bundle filename
@@ -21,6 +23,16 @@ module.exports = {
                     },
                 },
             },
+            {
+                test: /\.(ts|tsx)$/,
+                use: [{
+                    loader: 'ts-loader',
+                    options: {
+                        transpileOnly: true
+                    },
+                }],
+                exclude: /node_modules/,
+            },
             // CSS files (optional)
             {
                 test: /\.css$/,
@@ -33,8 +45,14 @@ module.exports = {
             template: './client/src/index.html', // Path to HTML template
             // favicon: './public/favicon.ico', // Ppath to favicon (optional)
         }),
+        new DefinePlugin({
+            'process.env': JSON.stringify(dotenv.config().parsed)
+        })
     ],
     devServer: {
         historyApiFallback: true, // Enable HTML5 History API fallback
     },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js']
+    }
 };

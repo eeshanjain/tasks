@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render App 1`] = `
+<div>
+  <h1>
+    Task Manager
+  </h1>
+  <div>
+    <input
+      onChange={[Function]}
+      placeholder="Title"
+      type="text"
+      value=""
+    />
+    <input
+      onChange={[Function]}
+      placeholder="Description"
+      type="text"
+      value=""
+    />
+    <button
+      onClick={[Function]}
+    >
+      Add Task
+    </button>
+  </div>
+  <div />
+</div>
+`;
+
+exports[`should render TaskForm 1`] = `
+<div>
+  <input
+    onChange={[Function]}
+    placeholder="Title"
+    type="text"
+    value=""
+  />
+  <input
+    onChange={[Function]}
+    placeholder="Description"
+    type="text"
+    value=""
+  />
+  <button
+    onClick={[Function]}
+  >
+    Add Task
+  </button>
+</div>
+`;
+
+exports[`should render TaskList 1`] = `
+<div>
+  <div>
+    <h3
+      className=""
+    >
+      test title 1
+    </h3>
+    <p
+      className=""
+    >
+      test description 1
+    </p>
+    <button
+      onClick={[Function]}
+    >
+      Edit
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Delete
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Mark As Done
+    </button>
+  </div>
+  <div>
+    <h3
+      className="task-done"
+    >
+      test title 2
+    </h3>
+    <p
+      className="task-done"
+    >
+      test description 2
+    </p>
+    <button
+      onClick={[Function]}
+    >
+      Edit
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Delete
+    </button>
+  </div>
+</div>
+`;
