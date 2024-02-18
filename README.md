@@ -1,52 +1,26 @@
-# MERN Task Manager Codebase Assessment
+# MERN Task Manager Codebase Assessment - Solution Design
 
-Welcome to the MERN Task Manager Codebase Assessment! In this assessment, you will be tasked with improving the code quality, applying SOLID principles, and writing unit test cases for the existing MERN Task Manager application.
+I'd like to elaborate on the decisions that I have taken to improve the code quality for the purpose of this assessment.
+I was also able to implement the "Mark as Done" feature that was requested.
 
-## Getting Started
+## Improvements to Code Quality
 
-To begin the assessment, follow these steps:
+This was achieved through various changes, some of them are:
+1. Implementation of Typescript to enfore strict typing
+2. Implementation of static code analysis through ESLint
+3. Implementation of Unit Test cases
+4. Breaking down code into multiple components instead of having just one component with all of the UI code
+5. Making these components stateless, so that they are dependent only on the props that are passed down to them
+6. Identification of a file that was incorrectly placed (initial location - `/client/src/Task.js`, current location - `/server/models/Task.ts`)
 
-1. **Install Dependencies**: Navigate to the project directory and install the dependencies for both the client and server:
+## Feature Request - Mark Task as Done
 
-   ```
-   cd mern-task-manager
-   npm install
-   ```
+One of the biggest advantages of using a Database like MongoDB is that even if there are changes to the structure of the document being stored, the older documents are fairly unaffected by the change and this was very evident here.
+In order to achieve this feature, I just had to add an additional property called `done` that contains a boolean value (default value being `false`).
+This way, it is assumed that the older tasks have not been marked as "done" but now have the capability for it.
 
-2. **Run the Application**: Start the development server for both the client and server:
+## Challenges faced
 
-   ```
-   # Start the client
-   npm run client
-   
-   # Start the server
-   npm run server
-   ```
-
-3. **Access the Application**: Open your web browser and navigate to `http://localhost:3000` to access the MERN Task Manager application.
-
-## Assessment Tasks
-
-Your task is to improve the code quality, apply SOLID principles, and write unit test cases for the existing MERN Task Manager application. Here are the specific tasks you should focus on:
-
-1. **Code Quality**: Review the existing codebase and identify areas for improvement in terms of code quality, readability, project structuring and maintainability. Apply coding standards, conventions, and best practices to enhance the overall quality of the code.
-
-2. **SOLID Principles**: Apply SOLID principles (Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion) to refactor the codebase where necessary. Ensure that each component and module adheres to these principles to promote better design and extensibility.
-
-3. **Unit Test Cases**: Write unit test cases using a testing framework such as Jest or Mocha to test critical components, functions, and endpoints of the application. Cover both positive and negative test cases to ensure robustness and reliability.
-
-4. **TypeScript**: Re-Write the javascript files with TypeScript throughout the project.
-
-## Feature Request
-
-In addition to code assessment, you are expected to add "Done" feature to mark the task completed for the each task. All done tasks should be sorted and placed at the bottom of task list. Visually, you can either strikethrough the task or make the task with light gray color to show the task is Done.
-
-## Submission Guidelines
-
-You might find some files are placed in wrong folder intentionally, try to fix them while you restructure the project. If you have issues to run mongodb locally, you can mock the mongodb to get the intended behaviour.
-
-Once you have completed the tasks, submit your solution by sending mail within 24 hours. Include a detailed description of the changes made, rationale behind your decisions, and any challenges faced during the process.
-
-## Feedback and Support
-
-If you have any questions, concerns, or need assistance during the assessment, feel free to reach out back to us.
+1. The "Edit Task" feature was confusing. I was not sure what was to be done with it so, for now, I have left it as is. Ideally, I would have liked to delete the feature since it was not serving any real purpose.
+2. Getting the UI to communicate with the back-end required some changes as there were CORS issues out-of-the-box. It is possible that I may have made a mistake in the setup, please do let me know if that's the case.
+3. Mocking the API calls for the UI Unit Testing was a big challenge that I, unfortunately, did not have enough time to resolve. Hence, the UI testing is very rudimentary currently.
